@@ -13,7 +13,7 @@
     
       <ul class="flex justify-evenly">
         <li><router-link to="/"></router-link></li>
-        <li><router-link to="/Buscador"></router-link></li>
+        <li><router-link to="/Buscador">BUSCADOR</router-link></li>
         <li><router-link to="/MiLista"></router-link></li>
         <li><router-link to="/MiPerfil"></router-link></li>
         <li><router-link to="/Kanban"></router-link></li>
