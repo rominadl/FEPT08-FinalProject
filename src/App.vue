@@ -10,10 +10,9 @@
     <button class="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded-full h-16 w-36">
         REGISTRATE
     </button>
-    
       <ul class="flex justify-evenly">
         <li><router-link to="/"></router-link></li>
-        <li><router-link to="/Buscador"></router-link></li>
+        <li><router-link to="/Buscador">BUSCADOR</router-link></li>
         <li><router-link to="/MiLista">Mi Lista</router-link></li>
         <li><router-link to="/MiPerfil"></router-link></li>
         <li><router-link to="/Kanban"></router-link></li>
