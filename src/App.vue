@@ -25,13 +25,14 @@
         <li><router-link to="/Kanban"></router-link></li>
       </ul>
     </nav>
+    <RouterView />
     <footer class="flex border border-e-black justify-between justify-items-end p-5">
       <p>© 2024 bunq</p>
       <a href="">Términos y Condiciones</a>
       <a href="">Política de Privacidad</a>
       <a href="">Configuración de Cookies</a>
     </footer>
-    <RouterView />
+ 
   </div>
 </template>
 <script>
