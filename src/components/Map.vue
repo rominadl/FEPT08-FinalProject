@@ -1,8 +1,8 @@
 <template>
-  <div
+    <div
     ref="mapContainer"
-    class="w-full h-96 rounded-lg shadow-md bg-gray-200"
-  ></div>
+    class="w-full h-96 rounded-lg shadow-md bg-gray-200">
+    </div>
 </template>
 <script>
 import { ref, onMounted } from "vue";
