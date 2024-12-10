@@ -1,7 +1,7 @@
 <template>
 
   <h2>{{ title }}</h2>
-  <h3>{{ counter.name }}</h3>
+  <!-- <h3>{{ resultadosmap.name }}</h3> -->
   <p>{{ description }}</p>
   <router-view></router-view>
 
@@ -28,7 +28,7 @@
 
 </template>
 <script>
-import { useCounterStore } from '../stores/counter.js';
+import { useResultadosmapStore } from '../stores/resultadosmap.js';
 export default {
   name: "Home",
   data() {
@@ -38,15 +38,15 @@ export default {
         "Busca tu restaurante, encuentra quién te necesita y conecta con tus potenciales clientes",
     };
   },
-  computed :{  //las computer son propiedades que salen de un calculo
-     counter(){
-      return useCounterStore()
-       },
-       product(){
-        return useCounterStore()
-       }
-  }
-};
+  // computed :{  //las computer son propiedades que salen de un calculo
+  //    useResultadosmapStore(){
+  //     return useResultadosmapStore()
+  //      },
+      //  product(){
+      //   return useResultadosStore()
+      //  }
+  };
+// };
 </script>
 
 <style></style>
