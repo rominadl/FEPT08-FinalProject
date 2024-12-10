@@ -1,4 +1,10 @@
 <template>
+
+  <h2>{{ title }}</h2>
+  <h3>{{ counter.name }}</h3>
+  <p>{{ description }}</p>
+  <router-view></router-view>
+
   <div class="h-[750px]">
 
     <!-- Texto principal de bienvenida-->
@@ -19,8 +25,10 @@
     </div>
     <router-view></router-view>
   </div>
+
 </template>
 <script>
+import { useCounterStore } from '../stores/counter.js';
 export default {
   name: "Home",
   data() {
@@ -30,6 +38,14 @@ export default {
         "Busca tu restaurante, encuentra quién te necesita y conecta con tus potenciales clientes",
     };
   },
+  computed :{  //las computer son propiedades que salen de un calculo
+     counter(){
+      return useCounterStore()
+       },
+       product(){
+        return useCounterStore()
+       }
+  }
 };
 </script>
 
