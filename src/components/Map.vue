@@ -12,53 +12,55 @@ import "leaflet/dist/leaflet.css";
 export default {
   name: "Map",
   setup() {
-    const mapContainer = ref(null);
-    let marker = null; // Declarar la variable en un alcance superior
+    const mapContainer = ref(null); // Referencia al contenedor del mapa
+    let initialMarker = null; // Variable para el marcador inicial
+    let dynamicMarker = null; // Variable para el marcador dinámico
+
     onMounted(() => {
       if (mapContainer.value) {
-        // console.log(mapContainer.value);
+        // Inicializar el mapa
         const map = L.map(mapContainer.value, {
-          center: [51.505, -0.09], // Coordenadas de inicio (Lat, Lon)
-          zoom: 13, // Nivel de zoom
+          center: [41.3851, 2.1734], // Coordenadas iniciales (Londres)
+          zoom: 13, // Nivel de zoom inicial
         });
 
-        // Cargar el mapa con tiles de OpenStreetMap
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-          map
-        );
-        // Crear un marcador inicial en el centro del mapa
-        marker = L.marker([51.505, -0.09]).addTo(map);
-        
+        // Cargar las capas del mapa
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
 
-        // Añadir un marcador en las coordenadas iniciales
-        L.marker([51.505, -0.09])
+        // Crear el marcador inicial
+        initialMarker = L.marker([41.3851, 2.1734])
           .addTo(map)
-          .bindPopup("Este es un marcador.")
+          .bindPopup("Este es el marcador inicial.")
           .openPopup();
 
-        // Evento: actualizar el marcador al hacer clic en el mapa
-        map.on("click", (event) => {
-          const { lat, lng } = event.latlng; // Obtener las coordenadas del clic
+        // Evento: al hacer clic en el mapa
+        map.on("click", async (event) => {
+  const { lat, lng } = event.latlng;
 
-          // Si ya existe un marcador, eliminarlo
-          if (marker) {
-            marker.remove();
-          }
+  // Eliminar marcador inicial si existe
+  if (initialMarker) {
+    initialMarker.remove();
+    initialMarker = null;
+  }
 
-          // Crear un nuevo marcador en la posición del clic
-          marker = L.marker([lat, lng]).addTo(map);
+  // Eliminar marcador dinámico anterior
+  if (dynamicMarker) {
+    dynamicMarker.remove();
+  }
 
-          // Opcional: agregar un popup con las coordenadas
-          marker.bindPopup(`Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`).openPopup();
-        });
+  // Crear un nuevo marcador dinámico
+  dynamicMarker = L.marker([lat, lng]).addTo(map);
+  dynamicMarker.bindPopup(`Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`).openPopup();
+
+  // Buscar negocios cercanos
+  await fetchBusinesses(lat, lng);
+});
       } else {
         console.log("Contenedor del mapa no encontrado");
       }
     });
 
-    return {
-      mapContainer,
-    };
+    return { mapContainer };
   },
 };
 </script>
