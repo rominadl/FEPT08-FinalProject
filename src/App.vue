@@ -36,6 +36,7 @@
         <li><router-link to="/MiLista"></router-link></li>
         <li><router-link to="/MiPerfil"></router-link></li>
         <li><router-link to="/Kanban"></router-link></li>
+
       </ul>
     </nav>
     <RouterView />

@@ -6,6 +6,7 @@ import MiLista from './views/MiLista.vue'
 import Kanban from './views/Kanban.vue'
 import NotFound from './views/NotFound.vue'
 
+
 const routes = [
      { path: "/:path(.*)",
         name:"NotFound",

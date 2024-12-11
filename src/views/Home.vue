@@ -20,6 +20,7 @@
         <li><router-link to="/MiLista">Crear mi lista</router-link></li>
         <li><router-link to="/MiPerfil"></router-link></li>
         <li><router-link to="/Kanban"></router-link></li>
+   
       </ul>
     </div>
     <router-view></router-view>
