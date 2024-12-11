@@ -28,6 +28,7 @@ export default {
         );
         // Crear un marcador inicial en el centro del mapa
         marker = L.marker([51.505, -0.09]).addTo(map);
+        
 
         // Añadir un marcador en las coordenadas iniciales
         L.marker([51.505, -0.09])
