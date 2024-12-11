@@ -28,7 +28,7 @@
 </template>
 <script>
 
-import { useCounterStore } from '../stores/counter.js';
+
 
 
 import { useResultadosmapStore } from '../stores/resultadosmap.js';
