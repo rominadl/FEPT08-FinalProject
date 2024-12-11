@@ -6,7 +6,6 @@
   <router-view></router-view>
 
   <div class="h-[750px]">
-
     <!-- Texto principal de bienvenida-->
     <h1 class="px-10 pt-40 pb-5 text-7xl text-left font-semibold">
       {{ title }}
@@ -28,7 +27,12 @@
 
 </template>
 <script>
+
+
+
+
 import { useResultadosmapStore } from '../stores/resultadosmap.js';
+
 export default {
   name: "Home",
   data() {
