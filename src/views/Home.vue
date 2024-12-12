@@ -16,8 +16,8 @@
     <div class="mt-10">
       <ul class="flex justify-evenly">
         <li><router-link to="/"></router-link></li>
-        <li><router-link to="/Buscador">Buscar</router-link></li>
-        <li><router-link to="/MiLista">Crear mi lista</router-link></li>
+        <li><router-link to="/Buscador">Search</router-link></li>
+        <li><router-link to="/MiLista">Create my list</router-link></li>
         <li><router-link to="/MiPerfil"></router-link></li>
         <li><router-link to="/Kanban"></router-link></li>
    
@@ -38,9 +38,9 @@ export default {
   name: "Home",
   data() {
     return {
-      title: "SÉ EL PROVEEDOR MÁS EFICAZ",
+      title: "BE THE MOST EFFECTIVE SUPPLIERZ",
       description:
-        "Busca tu restaurante, encuentra quién te necesita y conecta con tus potenciales clientes",
+        "Find your restaurant, find who needs you, connect with your potential customer",
     };
   },
   // computed :{  //las computer son propiedades que salen de un calculo

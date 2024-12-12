@@ -19,12 +19,12 @@
         <button
           class="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded-full h-10 w-36"
         >
-          INICIAR SESIÓN
+        INITIAL SESSION
         </button>
         <button
           class="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 mx-2 rounded-full h-10 w-36"
         >
-          REGÍSTRATE
+        REGISTER
         </button>
     
       </div>
@@ -46,9 +46,9 @@
       class="flex border border-e-black justify-between justify-items-end p-5 align"
     >
       <p>© 2024 Probest</p>
-      <a href="">Términos y Condiciones</a>
-      <a href="">Política de Privacidad</a>
-      <a href="">Configuración de Cookies</a>
+      <a href="">Terms and conditions</a>
+      <a href="">Privacy Policy</a>
+      <a href="">Cookie Settings</a>
     </footer>
   </div>
 </template>
@@ -59,9 +59,9 @@ export default {
   name: "Home",
   data() {
     return {
-      title: "SÉ EL PROVEEDOR MÁS EFICAZ",
+      title: "BE THE MOST EFFECTIVE SUPPLIER",
       description:
-        "Busca tu restaurante, busca quien te necesita conecta con tus potenciales clientes",
+        "Find your restaurant, find who needs you, connect with your potential customers",
     };
   },
 };
