@@ -5,6 +5,7 @@ export const useRestaurantStore = defineStore("restaurants", {
     restaurants: null,
     loading: false,
     error: "",
+    myList:[],
   }),
   actions: {
     async getRestaurants(location, restType) {
@@ -40,9 +41,12 @@ export const useRestaurantStore = defineStore("restaurants", {
     },
     addRestaurantToList(business) {
         // Verifica si el restaurante ya está en la lista
-        if (!this.myList.some((rest) => rest.id === business.id)) {
-          this.myList.push(business);
+        if (!this.myList.find((item) => item.id === business.id)) {
+            this.myList.push(business);
         }
+      },
+      removeRestaurantFromList(id) {
+        this.myList = this.myList.filter((business) => business.id !== id);
       },
     },
     getters: {
