@@ -19,7 +19,7 @@
         <button
           class="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded-full h-10 w-36"
         >
-        INITIAL SESSION
+        LOG IN
         </button>
         <button
           class="text-sm bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-3 mx-2 rounded-full h-10 w-36"
