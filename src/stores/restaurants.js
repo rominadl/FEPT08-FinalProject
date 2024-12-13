@@ -10,9 +10,9 @@ export const useRestaurantStore = defineStore("restaurants", {
     async getRestaurants(location, restType) {
       this.loading = true;
       this.error = "";
-      this.restaurants = null; // Limpia el estado antes de realizar la solicitud
+      this.restaurants = null;
       try {
-        const url = `https://api.yelp.com/v3/businesses/search?term=${restType}&location=${location}`;
+        const url = `https://api.yelp.com/v3/businesses/search?categories=restaurants&location=${location}&term=${restType}`;
         const response = await fetch(url, {
           headers: {
             Authorization:
@@ -38,5 +38,16 @@ export const useRestaurantStore = defineStore("restaurants", {
         this.loading = false;
       }
     },
-  },
-});
+    addRestaurantToList(business) {
+        // Verifica si el restaurante ya está en la lista
+        if (!this.myList.some((rest) => rest.id === business.id)) {
+          this.myList.push(business);
+        }
+      },
+    },
+    getters: {
+      getMyList() {
+        return this.myList;
+      },
+    },
+  });

@@ -2,6 +2,7 @@
     <div
       class="justify-center py-10 justify-items-center min-h-screen bg-cover bg-center"
     >
+    <li><router-link to="/MiLista">Create my list</router-link></li>
       <h1 class="text-xl font-bold font-mono my-12">The Restaurant Finder</h1>
       <div class="flex gap-10">
         <div>
@@ -74,6 +75,8 @@
                 >
                   Ver más detalles
                 </a>
+
+                Botón agregar a mi lista
                 <button
                   @click.prevent="sendRestToList(business)"
                   class="text-sm bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded ml-2"
