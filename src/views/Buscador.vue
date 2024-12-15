@@ -1,14 +1,22 @@
 <template>
+  <!-- contenedor general -->
   <div
-    class="justify-center py-10 justify-items-center min-h-screen bg-cover bg-center"
+    class="flex flex-col py-10 min-h-screen  bg-graylight"
   >
-    <li><router-link to="/MiLista">Create my list</router-link></li>
-    <h1 class="text-xl font-bold font-mono my-12">The Restaurant Finder</h1>
-    <div class="flex gap-10">
-      <div>
+    <p
+      class="w-28 self-end mx-8 uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+    >
+      <router-link to="/MiLista">My List</router-link>
+</p>
+    <h1 class="flex justify-center text-xl font-bold font-sans my-12">The Restaurant Finder</h1>
+    
+    <!-- contenedor del buscador y la lista de resultados -->
+    <div class="flex justify-center gap-20">
+      <!-- contenedor del buscador  -->
+      <div class="flex-col">
         <form
           @submit.prevent="submit"
-          class="bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 my-4 h-82 w-80"
+          class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4 my-4 h-82 w-80"
         >
           <label
             class="block text-gray-700 font-semibold mb-2"
@@ -33,7 +41,7 @@
             placeholder="Ex. Barcelona"
           />
           <button
-            class="my-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            class="my-8 bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
             :disabled="loading"
           >
@@ -41,9 +49,9 @@
           </button>
         </form>
       </div>
-
+      <!-- contenedor de resultados  -->
       <div
-        class="flex flex-col items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6"
+        class="flex-col items-center justify-between  px-4 py-3 sm:px-6"
       >
         <h2 class="font-semibold">
           📍 Results for
@@ -61,7 +69,9 @@
             :key="business.id"
             class="my-4"
           >
-            <p>
+
+        <!-- Lista en forma de tarjetas de los resultados  -->
+            <div class="bg-gray-300 shadow-lg rounded-md p-5">
               <span class="font-semibold"> {{ business.name }} </span><br />
               <span class="text-sm">⭐️ {{ business.rating }} </span>
               <span class="text-sm"> 💰{{ business.price || "N/A" }} </span
@@ -72,20 +82,31 @@
               <a
                 :href="business.url"
                 target="_blank"
-                class="text-sm text-blue-500 underline"
+                class="text-sm text-gray-100 underline"
               >
-                Ver más detalles
+                See more details
               </a>
 
-              Botón agregar a mi lista
+              <!-- Botón agregar a mi lista -->
               <button
+                v-if="!business.isAdded"
                 @click.prevent="sendRestToList(business)"
-                class="text-sm bg-green-500 hover:bg-green-600 text-white font-semibold py-1 px-2 rounded ml-2"
+                class="text-sm bg-green-600 hover:bg-green-700 text-white font-semibold py-1 px-2 rounded ml-24 mt-5"
               >
-                ➕ Agregar a mi lista
+                Add to my list
               </button>
-            </p>
+
+              <!-- Icono de tilde cuando el elemento está agregado -->
+              <span
+                v-else
+                class="text-green-500 text-2xl font-bold flex items-center space-x-2"
+              >
+                ✓
+              </span>
+            </div>
           </div>
+
+          <!-- indicador de las paginas de resultados  -->
           <div class="pagination flex justify-center mt-5">
             <button
               :disabled="currentPage === 1"
