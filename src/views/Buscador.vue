@@ -16,7 +16,9 @@
     </h1>
 
     <!-- Contenedor del buscador y los resultados -->
-    <div class="flex flex-col justify-center gap-10 sm:flex-row px-4 sm:px-10">
+    <div
+      class="flex flex-col mx-auto md:justify-center gap-10 sm:flex-row px-4 sm:px-10"
+    >
       <!-- Contenedor del buscador -->
       <div class="w-full sm:w-auto">
         <form
@@ -61,8 +63,8 @@
       <div class="w-full sm:w-2/3">
         <h2 class="font-semibold text-center sm:text-left mb-4">
           📍 Results for
-          {{ displayRestType ? ` ${displayRestType}` : "" }} restaurants
-          {{ displayLocation ? `in ${displayLocation}` : "" }}
+          {{ displayRestType + " restaurants" }}
+          {{ displayLocation ? " in " + displayLocation : "" }}
         </h2>
 
         <!-- Mensajes de estado -->
@@ -185,6 +187,12 @@ export default {
         this.restaurants.businesses.length / this.resultsPerPage
       );
     },
+    displayRestType() {
+    return this.restType || ""; // Retorna un valor por defecto
+  },
+  displayLocation() {
+    return this.location || ""; // Retorna un valor por defecto
+  },
   },
   methods: {
     async submit() {

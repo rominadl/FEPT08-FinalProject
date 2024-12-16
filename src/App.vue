@@ -56,7 +56,7 @@ export default {
   computed: {
         // Verificar si estamos en las rutas de 'Buscador' o 'Mi Lista'
         isInExcludedRoutes() {
-      return this.$route.name === 'Buscador' || this.$route.name === 'MiLista';
+      return this.$route.name === 'Buscador' || this.$route.name === 'MiLista' || this.$route.name === 'Kanban';
     }
   }
 };
