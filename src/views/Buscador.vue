@@ -104,7 +104,7 @@
           </div>
 
           <!-- indicador de las paginas de resultados  -->
-          <div class="pagination flex justify-center mt-5">
+          <div v-if="restaurants && restaurants.businesses && restaurants.businesses.length > 0" class="pagination flex justify-center mt-5">
             <button
               :disabled="currentPage === 1"
               @click="changePage(-1)"
@@ -165,12 +165,15 @@ export default {
       this.currentPage = 1;
       await restaurants.getRestaurants(this.location, this.restType);
       if (!restaurants.error) {
+         if (restaurants.restaurants?.businesses?.length > 0) {
         this.restaurants.businesses.forEach((business) => {
           business.isAdded = this.myList.some((r) => r.id === business.id);
         });
         this.displayLocation = this.location;
         this.displayRestType = this.restType;
       }
+    }
+
     },
     changePage(direction) {
       this.currentPage += direction;
