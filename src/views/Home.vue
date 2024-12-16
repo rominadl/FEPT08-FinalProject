@@ -38,7 +38,7 @@ export default {
   name: "Home",
   data() {
     return {
-      title: "BE THE MOST EFFECTIVE SUPPLIERZ",
+      title: "BE THE MOST EFFECTIVE SUPPLIER",
       description:
         "Find your restaurant, find who needs you, connect with your potential customer",
     };
