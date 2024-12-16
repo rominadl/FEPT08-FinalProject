@@ -2,33 +2,43 @@
   <!-- contenedor general -->
   <div class="flex flex-col py-10 min-h-screen bg-graylight">
     <!-- Botón "My List" -->
-    <p class="w-28 self-end mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100">
+    <p
+      class="w-28 self-end mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+    >
       <router-link to="/MiLista">My List</router-link>
     </p>
 
     <!-- Título -->
-    <h1 class="text-center text-lg sm:text-2xl lg:text-3xl font-bold font-sans my-6 sm:my-12">
+    <h1
+      class="text-center text-lg sm:text-2xl lg:text-3xl font-bold font-sans my-6 sm:my-12"
+    >
       The Restaurant Finder
     </h1>
 
     <!-- Contenedor del buscador y los resultados -->
-    <div class="flex flex-col justify-center gap-10 sm:flex-row  px-4 sm:px-10">
+    <div class="flex flex-col justify-center gap-10 sm:flex-row px-4 sm:px-10">
       <!-- Contenedor del buscador -->
       <div class="w-full sm:w-auto">
         <form
           @submit.prevent="submit"
           class="bg-white shadow-lg rounded-lg px-6 sm:px-8 py-6 sm:py-8 mb-6 sm:mb-4 w-full max-w-md mx-auto"
         >
-          <label class="block text-gray-700 font-semibold mb-2" for="RestaurantType">
+          <label
+            class="block text-gray-700 font-semibold mb-2"
+            for="RestaurantType"
+          >
             Enter restaurant type:
           </label>
           <input
             v-model="restType"
             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Ex. Indú"
+            placeholder="Ex. Indian"
           />
 
-          <label class="block text-gray-700 font-semibold mt-6 mb-2" for="restaurantLocation">
+          <label
+            class="block text-gray-700 font-semibold mt-6 mb-2"
+            for="restaurantLocation"
+          >
             Enter restaurant location:
           </label>
           <input
@@ -50,13 +60,20 @@
       <!-- Contenedor de resultados -->
       <div class="w-full sm:w-2/3">
         <h2 class="font-semibold text-center sm:text-left mb-4">
-          📍 Results for {{ displayRestType ? ` ${displayRestType}` : "" }} restaurants {{ displayLocation ? `in ${displayLocation}` : "" }}
+          📍 Results for
+          {{ displayRestType ? ` ${displayRestType}` : "" }} restaurants
+          {{ displayLocation ? `in ${displayLocation}` : "" }}
         </h2>
 
         <!-- Mensajes de estado -->
         <div v-if="loading" class="text-center">Cargando...</div>
-        <div v-else-if="error" class="text-red-500 text-center">{{ error }}</div>
-        <div v-else-if="restaurants && restaurants.businesses.length === 0" class="text-center">
+        <div v-else-if="error" class="text-red-500 text-center">
+          {{ error }}
+        </div>
+        <div
+          v-else-if="restaurants && restaurants.businesses.length === 0"
+          class="text-center"
+        >
           We couldn't find the results.
         </div>
 
@@ -71,10 +88,11 @@
             <div class="bg-gray-300 shadow-lg rounded-md p-5 lg:w-[400px]">
               <span class="font-semibold"> {{ business.name }} </span><br />
               <span class="text-sm">⭐️ {{ business.rating }} </span>
-              <span class="text-sm"> 💰{{ business.price || "N/A" }} </span><br />
+              <span class="text-sm"> 💰{{ business.price || "N/A" }} </span
+              ><br />
               <span class="text-sm">
-                {{ business.location.display_address.join(", ") }}
-              </span><br />
+                {{ business.location.display_address.join(", ") }} </span
+              ><br />
               <a
                 :href="business.url"
                 target="_blank"
@@ -102,28 +120,33 @@
             </div>
           </div>
 
-
           <!-- indicador de las paginas de resultados  -->
-          <div v-if="restaurants && restaurants.businesses && restaurants.businesses.length > 0" class="pagination flex justify-center mt-5">
-
-          <!-- Paginación -->
-          <div class="pagination flex justify-center mt-5">
-
-            <button
-              :disabled="currentPage === 1"
-              @click="changePage(-1)"
-              class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-l"
-            >
-              Previous
-            </button>
-            <span class="px-4 py-2">Página {{ currentPage }}</span>
-            <button
-              :disabled="currentPage === totalPages"
-              @click="changePage(1)"
-              class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-r"
-            >
-              Next
-            </button>
+          <div
+            v-if="
+              restaurants &&
+              restaurants.businesses &&
+              restaurants.businesses.length > 0
+            "
+            class="pagination flex justify-center mt-5"
+          >
+            <!-- Paginación -->
+            <div class="pagination flex justify-center mt-5">
+              <button
+                :disabled="currentPage === 1"
+                @click="changePage(-1)"
+                class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-l"
+              >
+                Previous
+              </button>
+              <span class="px-4 py-2">Página {{ currentPage }}</span>
+              <button
+                :disabled="currentPage === totalPages"
+                @click="changePage(1)"
+                class="bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-r"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -170,15 +193,14 @@ export default {
       this.currentPage = 1;
       await restaurants.getRestaurants(this.location, this.restType);
       if (!restaurants.error) {
-         if (restaurants.restaurants?.businesses?.length > 0) {
-        this.restaurants.businesses.forEach((business) => {
-          business.isAdded = this.myList.some((r) => r.id === business.id);
-        });
-        this.displayLocation = this.location;
-        this.displayRestType = this.restType;
+        if (restaurants.restaurants?.businesses?.length > 0) {
+          this.restaurants.businesses.forEach((business) => {
+            business.isAdded = this.myList.some((r) => r.id === business.id);
+          });
+          this.displayLocation = this.location;
+          this.displayRestType = this.restType;
+        }
       }
-    }
-
     },
     changePage(direction) {
       this.currentPage += direction;
