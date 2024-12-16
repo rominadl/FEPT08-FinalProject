@@ -5,7 +5,7 @@
     <p
       class="w-28 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-slate-200 hover:bg-green-800 hover:text-slate-200 mb-4"
     >
-      <router-link to="/Buscador">Volver</router-link>
+      <router-link to="/Buscador">Return</router-link>
     </p>
 
     <!-- título -->
@@ -40,7 +40,7 @@
                 @click="removeFromList(business.id)"
                 class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded"
               >
-                Eliminar
+                Delete
               </button>
             </td>
           </tr>
@@ -63,7 +63,7 @@
             @click="removeFromList(business.id)"
             class="mt-4 w-full bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
           >
-            Eliminar
+            Delete
           </button>
         </div>
       </div>
