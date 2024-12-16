@@ -8,7 +8,7 @@
     
     <!-- Enlaces a empezar a buscar y crear mi lista-->
     <div class="mt-32">
-      <ul class="flex justify-end space-x-10 font-sans">
+      <ul class="flex justify-start space-x-10 font-sans">
         <li><router-link to="/"></router-link></li>
         <li class="uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"><router-link to="/Buscador">Search</router-link></li>
         <li class="uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"><router-link to="/MiLista">My List</router-link></li>
