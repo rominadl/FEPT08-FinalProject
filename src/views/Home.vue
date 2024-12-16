@@ -6,19 +6,7 @@
     >
       {{ title }}
     </h1>
-
-    <p class="px-10 text-3xl text-textdark">{{ description }}</p>
-    
-    <!-- Enlaces a empezar a buscar y crear mi lista-->
-    <div class="mt-32">
-      <ul class="flex justify-start space-x-10 font-sans">
-        <li><router-link to="/"></router-link></li>
-        <li class="uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"><router-link to="/Buscador">Search</router-link></li>
-        <li class="uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"><router-link to="/MiLista">My List</router-link></li>
-        <li><router-link to="/Kanban"></router-link></li>
-    <p
-      class="px-4 sm:px-10 text-lg sm:text-2xl lg:text-3xl text-textdark leading-relaxed"
-    >
+    <p class="px-10 text-3xl text-textdark">
       {{ description }}
     </p>
 
@@ -43,6 +31,15 @@
             My List
           </router-link>
         </li>
+        <!-- Enlace a Kanban -->
+        <li>
+          <router-link
+            to="/Kanban"
+            class="block text-center uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100 transition"
+          >
+            Kanban
+          </router-link>
+        </li>
       </ul>
     </div>
 
@@ -50,9 +47,8 @@
     <router-view></router-view>
   </div>
 </template>
-<script>
-import { useResultadosmapStore } from "../stores/resultadosmap.js";
 
+<script>
 export default {
   name: "Home",
   data() {
@@ -62,15 +58,9 @@ export default {
         "Find your restaurant, find who needs you, connect with your potential customer",
     };
   },
-  // computed :{  //las computer son propiedades que salen de un calculo
-  //    useResultadosmapStore(){
-  //     return useResultadosmapStore()
-  //      },
-  //  product(){
-  //   return useResultadosStore()
-  //  }
 };
-// };
 </script>
 
-<style></style>
+<style>
+/* Agrega tus estilos personalizados aquí */
+</style>
