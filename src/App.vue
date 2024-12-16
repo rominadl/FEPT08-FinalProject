@@ -18,7 +18,8 @@
       <!-- Botones incicar sesión y regístrate -->
       <div
         class="col-span-1 sm:col-span-2 flex justify-end space-x-2 sm:space-x-4"
-      >
+        v-if="!isInExcludedRoutes"
+        >
         <button
           class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
         >
@@ -52,6 +53,12 @@
 <script>
 export default {
   name: "Home",
+  computed: {
+        // Verificar si estamos en las rutas de 'Buscador' o 'Mi Lista'
+        isInExcludedRoutes() {
+      return this.$route.name === 'Buscador' || this.$route.name === 'MiLista';
+    }
+  }
 };
 </script>
 
