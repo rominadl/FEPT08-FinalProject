@@ -1,15 +1,15 @@
 <template>
   <!-- contenedor general -->
-  <div
-    class="flex flex-col py-10 min-h-screen  bg-graylight"
-  >
+  <div class="flex flex-col py-10 min-h-screen bg-graylight">
     <p
       class="w-28 self-end mx-8 uppercase font-bold rounded-md px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
     >
       <router-link to="/MiLista">My List</router-link>
-</p>
-    <h1 class="flex justify-center text-xl font-bold font-sans my-12">The Restaurant Finder</h1>
-    
+    </p>
+    <h1 class="flex justify-center text-xl font-bold font-sans my-12">
+      The Restaurant Finder
+    </h1>
+
     <!-- contenedor del buscador y la lista de resultados -->
     <div class="flex justify-center gap-20">
       <!-- contenedor del buscador  -->
@@ -50,9 +50,7 @@
         </form>
       </div>
       <!-- contenedor de resultados  -->
-      <div
-        class="flex-col items-center justify-between  px-4 py-3 sm:px-6"
-      >
+      <div class="flex-col items-center justify-between px-4 py-3 sm:px-6">
         <h2 class="font-semibold">
           📍 Results for
           {{ displayRestType ? ` ${displayRestType}` : "" }} restaurants
@@ -69,8 +67,7 @@
             :key="business.id"
             class="my-4"
           >
-
-        <!-- Lista en forma de tarjetas de los resultados  -->
+            <!-- Lista en forma de tarjetas de los resultados  -->
             <div class="bg-gray-300 shadow-lg rounded-md p-5">
               <span class="font-semibold"> {{ business.name }} </span><br />
               <span class="text-sm">⭐️ {{ business.rating }} </span>
@@ -144,6 +141,7 @@ export default {
       resultsPerPage: 5,
       displayLocation: "",
       displayRestType: "",
+      isButtonVisible: true, // Estado inicial: el botón es visible
     };
   },
   computed: {
@@ -167,6 +165,9 @@ export default {
       this.currentPage = 1;
       await restaurants.getRestaurants(this.location, this.restType);
       if (!restaurants.error) {
+        this.restaurants.businesses.forEach((business) => {
+          business.isAdded = this.myList.some((r) => r.id === business.id);
+        });
         this.displayLocation = this.location;
         this.displayRestType = this.restType;
       }
@@ -177,6 +178,7 @@ export default {
     sendRestToList(business) {
       const restaurants = useRestaurantStore(); // Obtén el store
       restaurants.addRestaurantToList(business); // Agrega a la lista
+      business.isAdded = true; // Solo afecta al restaurante clickeado
     },
   },
 };
