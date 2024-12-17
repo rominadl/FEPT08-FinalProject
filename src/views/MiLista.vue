@@ -22,16 +22,26 @@
     <!-- Tabla o diseño tipo tarjeta -->
     <div class="overflow-x-auto">
       <!-- Tabla para pantallas grandes -->
-      <table class="table-auto border-collapse border border-gray-400 w-full text-left hidden sm:table">
+      <table
+        class="table-auto border-collapse border border-gray-400 w-full text-left hidden sm:table"
+      >
         <thead>
           <tr>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Name</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Rating</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Price</th>
-            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Address</th>
-            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Telephone</th>
-            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Category</th>
-            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Deal State</th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">
+              Address
+            </th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">
+              Telephone
+            </th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">
+              Category
+            </th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">
+              Deal State
+            </th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Menu</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Notes</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100"></th>
@@ -42,20 +52,23 @@
           <tr v-if="myList.length === 0">
             <td class="border border-gray-300 px-4 py-2" colspan="8">
               <p class="text-center text-gray-500">
-                No restaurants added yet. 
+                No restaurants added yet. Go to My List to add your potential
+                customers.
               </p>
             </td>
           </tr>
           <!-- Fila con datos reales cuando la lista tiene restaurantes -->
           <tr v-for="business in myList" :key="business.id">
-            <td class="border border-gray-300 px-4 py-2">            <a
-              :href="business.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-blue-600 hover:underline"
-            >
-              {{ business.name }}
-            </a></td>
+            <td class="border border-gray-300 px-4 py-2">
+              <a
+                :href="business.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 hover:underline"
+              >
+                {{ business.name }}
+              </a>
+            </td>
             <td class="border border-gray-300 px-4 py-2 text-center">
               ⭐️ {{ business.rating }}
             </td>
@@ -65,16 +78,29 @@
             <td class="border border-gray-300 px-4 py-2">
               {{ business.location.display_address.join(", ") }}
             </td>
-            <td class="border border-gray-300 px-4 py-2">{{ business.phone }}</td>
-            <td class="border border-gray-300 px-4 py-2">{{ business.categories.map(category => `${category.alias}, ${category.title}`).join(' | ') }}</td>
+            <td class="border border-gray-300 px-4 py-2">
+              <a
+                :href="`tel:${business.phone}`"
+                class="text-blue-600 hover:underline"
+              >
+                {{ business.phone }}
+              </a>
+            </td>
+            <td class="border border-gray-300 px-4 py-2">
+              {{
+                business.categories
+                  .map((category) => `${category.alias}, ${category.title}`)
+                  .join(" | ")
+              }}
+            </td>
             <td class="border border-gray-300 px-4 py-2">
               <select
                 v-model="business.status"
-                class="w-full border rounded px-4 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
+                class="border rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
               >
-                <option value="Por contactar">To be contacted</option>
-                <option value="En contacto">In contact</option>
-                <option value="Trato cerrado">Deal closed</option>
+                <option value="To be contacted">To be contacted</option>
+                <option value="In contact">In contact</option>
+                <option value="Deal closed">Deal closed</option>
               </select>
             </td>
             <td class="border border-gray-300 px-4 py-2">
@@ -91,7 +117,7 @@
                 placeholder="Add note..."
               />
             </td>
-            
+
             <td class="border border-gray-300 px-4 py-2">
               <button
                 @click="removeFromList(business.id)"
@@ -114,7 +140,9 @@
           <p class="font-bold text-lg">{{ business.name }}</p>
           <p class="text-sm">⭐️ Rating: {{ business.rating }}</p>
           <p class="text-sm">💰 Price: {{ business.price || "N/A" }}</p>
-          <p class="text-sm">📍 Address: {{ business.location.display_address.join(", ") }}</p>
+          <p class="text-sm">
+            📍 Address: {{ business.location.display_address.join(", ") }}
+          </p>
           <p class="text-sm">📞 Telephone: {{ business.phone }}</p>
           <div class="my-2">
             <input
@@ -175,7 +203,12 @@ export default {
           Price: business.price || "N/A",
           Address: business.location.display_address.join(", "),
           Telephone: business.phone,
+          Category:
+            business.categories
+              .map((category) => `${category.alias}, ${category.title}`)
+              .join(" | ") || "",
           State: business.status || "To be contacted",
+          Menu: business.menu,
           Notes: business.notes || "",
         }))
       );

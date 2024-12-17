@@ -123,15 +123,22 @@
       </div>
     </div>
 
+
     <!-- Título y descripción -->
-    <h1 class="px-4 sm:px-10 pt-20 sm:pt-40 pb-5 text-4xl sm:text-6xl lg:text-7xl text-left uppercase font-semibold text-secondary">
+    <h1
+      class="px-4 sm:px-10 pt-20 sm:pt-40 pb-5 text-4xl sm:text-6xl lg:text-7xl text-left uppercase font-semibold text-secondary"
+    >
       {{ title }}
     </h1>
     <p class="px-10 text-3xl text-textdark">{{ description }}</p>
 
     <!-- Enlaces a empezar a buscar y crear mi lista -->
-    <div class="mt-16 sm:mt-32 flex justify-center sm:justify-start px-4 sm:px-10">
-      <ul class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 font-sans">
+    <div
+      class="mt-16 sm:mt-32 flex justify-center sm:justify-start px-4 sm:px-10"
+    >
+      <ul
+        class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 font-sans"
+      >
         <!-- Enlace a buscar -->
         <li>
           <router-link
@@ -173,64 +180,11 @@ export default {
   data() {
     return {
       title: "Be the most effective supplier",
-      description: "Find your restaurant, find who needs you, connect with your potential customer",
-      email: "",
-      password: "",
-      showLoginForm: false,
-      registerEmail: "",
-      registerPassword: "",
-      confirmPassword: "",
-      showRegisterForm: false,
-      registeredUsers: [], // Array para almacenar usuarios registrados
+      description:
+        "Find your restaurant, find who needs you, connect with your potential customer",
     };
-  },
-  methods: {
-    handleLogin() {
-      const user = this.registeredUsers.find(
-        (u) => u.email === this.email && u.password === this.password
-      );
-
-      if (user) {
-        alert("Inicio de sesión exitoso");
-        this.showLoginForm = false;
-        this.email = "";
-        this.password = "";
-      } else {
-        alert("Credenciales incorrectas");
-      }
-    },
-    handleRegister() {
-      if (this.registerPassword !== this.confirmPassword) {
-        alert("Las contraseñas no coinciden");
-        return;
-      }
-
-      // Verificar si el correo ya está registrado
-      const userExists = this.registeredUsers.some(
-        (u) => u.email === this.registerEmail
-      );
-      if (userExists) {
-        alert("El correo ya está registrado. Por favor, inicia sesión.");
-        return;
-      }
-
-      // Registrar nuevo usuario 
-      this.registeredUsers.push({
-        email: this.registerEmail,
-        password: this.registerPassword,
-      });
-
-      alert(`Cuenta creada para: ${this.registerEmail}`);
-      this.showRegisterForm = false;
-      this.registerEmail = "";
-      this.registerPassword = "";
-      this.confirmPassword = "";
-    },
   },
 };
 </script>
 
-
-<style>
-
-</style>
+<style></style>

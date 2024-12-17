@@ -23,18 +23,18 @@ export const useRestaurantStore = defineStore("restaurants", {
         });
 
         if (!response.ok) {
-          throw new Error("Error en la respuesta de la API");
+          throw new Error("Error in API response");
         }
 
         const data = await response.json();
         if (!data.businesses || data.businesses.length === 0) {
-          this.error = "No se encontraron restaurantes para tu búsqueda.";
+          this.error = "We couldn't find any restaurants for your search.";
           this.restaurants = null;
         } else {
           this.restaurants = data;
         }
       } catch (error) {
-        this.error = "Error al obtener los restaurantes. Inténtalo nuevamente.";
+        this.error = "Faild at obtaining restaurants. Please try again.";
       } finally {
         this.loading = false;
       }
