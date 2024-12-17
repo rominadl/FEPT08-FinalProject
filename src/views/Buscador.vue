@@ -2,18 +2,18 @@
   <!-- contenedor general -->
   <div class="flex flex-col py-10 min-h-screen bg-graylight">
     <!-- Botón "My List" -->
-     <div class="flex justify-end items-center">
-    <p
-      class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-8 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
-    >
-      <router-link to="/MiLista">My List</router-link>
-    </p>
-    <p
-      class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
-    >
-      <router-link to="/Kanban">Kanban</router-link>
-    </p>
-  </div>
+    <div class="flex justify-end items-center">
+      <p
+        class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-8 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+      >
+        <router-link to="/MiLista">My List</router-link>
+      </p>
+      <p
+        class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+      >
+        <router-link to="/Kanban">Kanban</router-link>
+      </p>
+    </div>
     <!-- Título -->
     <h1
       class="text-center text-lg sm:text-2xl lg:text-3xl font-bold font-sans my-6 sm:my-12"
@@ -56,17 +56,17 @@
           />
 
           <button
-            class="mt-6 w-full bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
+            class="mt-6 w-full sm:w-2/3 bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition"
             type="submit"
             :disabled="loading"
           >
-            {{ loading ? "Cargando..." : "Submit" }}
+            {{ loading ? "Loading..." : "Submit" }}
           </button>
         </form>
       </div>
 
       <!-- Contenedor de resultados -->
-      <div class="w-full sm:w-2/3">
+      <div class="w-full sm:w-[400px]">
         <h2 class="font-semibold text-center sm:text-left mb-4">
           📍 Results for
           {{ displayRestType + " restaurants" }}
@@ -74,7 +74,7 @@
         </h2>
 
         <!-- Mensajes de estado -->
-        <div v-if="loading" class="text-center">Cargando...</div>
+        <div v-if="loading" class="text-center">Loading...</div>
         <div v-else-if="error" class="text-red-500 text-center">
           {{ error }}
         </div>
@@ -160,7 +160,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -195,11 +194,11 @@ export default {
       );
     },
     displayRestType() {
-    return this.restType || ""; // Retorna un valor por defecto
-  },
-  displayLocation() {
-    return this.location || ""; // Retorna un valor por defecto
-  },
+      return this.restType || ""; // Retorna un valor por defecto
+    },
+    displayLocation() {
+      return this.location || ""; // Retorna un valor por defecto
+    },
   },
   methods: {
     async submit() {
