@@ -1,5 +1,6 @@
+
 <template>
-    <div class="flex flex-col sm:flex-row gap-4 p-4">
+    <div class="flex flex-col sm:flex-row gap-4 p-4 min-h-screen">
       <!-- Column: To Be Contacted -->
       <div class="flex-1 bg-gray-100 rounded-lg shadow-md p-4">
         <h2 class="text-xl font-bold mb-4 text-white bg-green-600 p-2 rounded-md">To be contacted</h2>
@@ -38,6 +39,7 @@
           <p class="text-gray-500 text-sm">Category: {{ business.category }}</p>
         </div>
       </div>
+
     </div>
   </template>
   
