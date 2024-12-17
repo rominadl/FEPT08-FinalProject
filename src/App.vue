@@ -15,7 +15,6 @@
         </div>
       </router-link>
     </div>
-
     <!-- Botones de sesión -->
     <div
       class="col-span-1 sm:col-span-2 flex justify-end space-x-2 sm:space-x-4"
@@ -35,9 +34,17 @@
       >
         REGISTER
       </button>
+      <!-- Botón MY PROFILE con ícono -->
+      <router-link to="/MiPerfil">
+        <button
+          class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36 flex items-center justify-center space-x-2"
+        >
+          <i class="fas fa-user"></i>
+          <span>MY PROFILE</span>
+        </button>
+      </router-link>
     </div>
   </nav>
-
   <!-- Formulario de inicio de sesión -->
   <div
     v-if="showLoginForm"
@@ -83,7 +90,6 @@
       </button>
     </div>
   </div>
-
   <!-- Formulario de registro -->
   <div
     v-if="showRegisterForm"
@@ -143,9 +149,7 @@
       </button>
     </div>
   </div>
-
   <RouterView />
-
   <!-- Footer -->
   <footer
     class="flex flex-col sm:flex-row justify-between items-center p-5 bg-gray-100 text-center sm:text-left space-y-3 sm:space-y-0"
@@ -158,7 +162,6 @@
     </div>
   </footer>
 </template>
-
 <script>
 export default {
   name: "Home",
@@ -179,7 +182,6 @@ export default {
       const user = this.registeredUsers.find(
         (u) => u.email === this.email && u.password === this.password
       );
-
       if (user) {
         alert("Login successful");
         this.showLoginForm = false;
@@ -194,7 +196,6 @@ export default {
         alert("Passwords do not match");
         return;
       }
-
       // Verificar si el correo ya está registrado
       const userExists = this.registeredUsers.some(
         (u) => u.email === this.registerEmail
@@ -203,13 +204,11 @@ export default {
         alert("The email is already registered. Please log in.");
         return;
       }
-
       // Registrar nuevo usuario
       this.registeredUsers.push({
         email: this.registerEmail,
         password: this.registerPassword,
       });
-
       alert(`Account created for: ${this.registerEmail}`);
       this.showRegisterForm = false;
       this.registerEmail = "";
@@ -229,5 +228,4 @@ export default {
   },
 };
 </script>
-
 <style></style>

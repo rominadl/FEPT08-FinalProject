@@ -1,129 +1,5 @@
 <template>
   <div class="h-auto sm:h-[750px] bg-graylight">
-    <!-- Barra de navegación -->
-    <nav class="flex items-center justify-between p-5 bg-gray-100">
-  <!-- Logo con enlace a home -->
-  <div class="flex justify-start items-center">
-    <router-link to="/">
-      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full overflow-hidden">
-        <img src="/src/logorest.png" alt="Logo" class="w-full h-full object-cover" />
-      </div>
-    </router-link>
-  </div>
-
-  <!-- Botones de sesión -->
-  <div class="flex items-center space-x-2 sm:space-x-4">
-    <!-- Botón Log In -->
-    <button
-      @click="showLoginForm = true"
-      class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
-    >
-      LOGIN
-    </button>
-    <!-- Botón Register -->
-    <button
-      @click="showRegisterForm = true"
-      class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
-    >
-      REGISTER
-    </button>
-<!-- Botón MY PROFILE con ícono -->
-<router-link to="/MiPerfil">
-  <button
-    class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36 flex items-center justify-center space-x-2"
-  >
-    <i class="fas fa-user"></i> 
-    <span>MY PROFILE</span>
-  </button>
-</router-link>
-
-  </div>
-</nav>
-
-
-    <!-- Formulario de inicio de sesión -->
-    <div v-if="showLoginForm" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-      <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-lg font-bold text-center mb-4">Login</h2>
-        <form @submit.prevent="handleLogin">
-          <div class="mb-4">
-            <label for="email" class="block text-sm font-semibold">Email</label>
-            <input
-              v-model="email"
-              type="email"
-              id="email"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-200"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="password" class="block text-sm font-semibold">Password</label>
-            <input
-              v-model="password"
-              type="password"
-              id="password"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-200"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10"
-          >
-            Login
-          </button>
-        </form>
-        <button @click="showLoginForm = false" class="mt-4 w-full text-sm text-gray-500">Cancel</button>
-      </div>
-    </div>
-
-    <!-- Formulario de registro -->
-    <div v-if="showRegisterForm" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
-      <div class="bg-white p-6 rounded-lg shadow-lg w-96">
-        <h2 class="text-lg font-bold text-center mb-4">Create Account</h2>
-        <form @submit.prevent="handleRegister">
-          <div class="mb-4">
-            <label for="register-email" class="block text-sm font-semibold">Email</label>
-            <input
-              v-model="registerEmail"
-              type="email"
-              id="register-email"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-200"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="register-password" class="block text-sm font-semibold">Password</label>
-            <input
-              v-model="registerPassword"
-              type="password"
-              id="register-password"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-200"
-              required
-            />
-          </div>
-          <div class="mb-4">
-            <label for="confirm-password" class="block text-sm font-semibold">Confirm Password</label>
-            <input
-              v-model="confirmPassword"
-              type="password"
-              id="confirm-password"
-              class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-green-200"
-              required
-            />
-          </div>
-          <button
-            type="submit"
-            class="w-full bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10"
-          >
-            Register
-          </button>
-        </form>
-        <button @click="showRegisterForm = false" class="mt-4 w-full text-sm text-gray-500">Cancel</button>
-      </div>
-    </div>
-
-
     <!-- Título y descripción -->
     <h1
       class="px-4 sm:px-10 pt-20 sm:pt-40 pb-5 text-4xl sm:text-6xl lg:text-7xl text-left uppercase font-semibold text-secondary"
@@ -131,7 +7,6 @@
       {{ title }}
     </h1>
     <p class="px-10 text-3xl text-textdark">{{ description }}</p>
-
     <!-- Enlaces a empezar a buscar y crear mi lista -->
     <div
       class="mt-16 sm:mt-32 flex justify-center sm:justify-start px-4 sm:px-10"
@@ -168,12 +43,10 @@
         </li>
       </ul>
     </div>
-
     <!-- Vista principal -->
     <router-view></router-view>
   </div>
 </template>
-
 <script>
 export default {
   name: "Home",
@@ -186,5 +59,4 @@ export default {
   },
 };
 </script>
-
 <style></style>
