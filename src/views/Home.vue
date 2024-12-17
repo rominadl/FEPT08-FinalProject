@@ -1,34 +1,45 @@
 <template>
   <div class="h-auto sm:h-[750px] bg-graylight">
     <!-- Barra de navegación -->
-    <nav class="grid grid-cols-2 sm:grid-cols-3 p-5 bg-gray-100 items-center">
-      <!-- Logo con enlace a home -->
-      <div class="col-span-1 flex justify-start items-center">
-        <router-link to="/">
-          <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full overflow-hidden">
-            <img src="/src/logorest.png" alt="Logo" class="w-full h-full object-cover" />
-          </div>
-        </router-link>
+    <nav class="flex items-center justify-between p-5 bg-gray-100">
+  <!-- Logo con enlace a home -->
+  <div class="flex justify-start items-center">
+    <router-link to="/">
+      <div class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full overflow-hidden">
+        <img src="/src/logorest.png" alt="Logo" class="w-full h-full object-cover" />
       </div>
+    </router-link>
+  </div>
 
-      <!-- Botones de sesión -->
-      <div class="col-span-1 sm:col-span-2 flex justify-end space-x-2 sm:space-x-4">
-        <!-- Botón Log In -->
-        <button
-          @click="showLoginForm = true"
-          class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
-        >
-          LOGIN
-        </button>
-        <!-- Botón Register -->
-        <button
-          @click="showRegisterForm = true"
-          class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
-        >
-          REGISTER
-        </button>
-      </div>
-    </nav>
+  <!-- Botones de sesión -->
+  <div class="flex items-center space-x-2 sm:space-x-4">
+    <!-- Botón Log In -->
+    <button
+      @click="showLoginForm = true"
+      class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
+    >
+      LOGIN
+    </button>
+    <!-- Botón Register -->
+    <button
+      @click="showRegisterForm = true"
+      class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36"
+    >
+      REGISTER
+    </button>
+<!-- Botón MY PROFILE con ícono -->
+<router-link to="/MiPerfil">
+  <button
+    class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36 flex items-center justify-center space-x-2"
+  >
+    <i class="fas fa-user"></i> 
+    <span>MY PROFILE</span>
+  </button>
+</router-link>
+
+  </div>
+</nav>
+
 
     <!-- Formulario de inicio de sesión -->
     <div v-if="showLoginForm" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
