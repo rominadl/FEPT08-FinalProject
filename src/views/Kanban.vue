@@ -1,6 +1,17 @@
 
 <template>
-    <div class="flex flex-col sm:flex-row gap-4 p-4 min-h-screen">
+    <div class="px-10">
+        <!-- Botón para volver al buscador -->
+        <p
+      class="w-28 mt-10 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-slate-200 hover:bg-green-800 hover:text-slate-200 mb-4"
+    >
+      <router-link to="/Buscador">Return</router-link>
+    </p>
+
+    <!-- Título -->
+    <h1 class="text-2xl font-bold mb-6 mt-10">My Kanban</h1>
+
+    <div class="flex flex-col sm:flex-row gap-4 p-4 min-h-screen justify-around">
       <!-- Column: To Be Contacted -->
       <div class="flex-1 bg-gray-100 rounded-lg shadow-md p-4">
         <h2 class="text-xl font-bold mb-4 text-white bg-green-600 p-2 rounded-md">To be contacted</h2>
@@ -41,6 +52,7 @@
       </div>
 
     </div>
+</div>
   </template>
   
   <script>
