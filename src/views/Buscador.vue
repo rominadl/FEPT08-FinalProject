@@ -2,12 +2,18 @@
   <!-- contenedor general -->
   <div class="flex flex-col py-10 min-h-screen bg-graylight">
     <!-- Botón "My List" -->
+     <div class="flex justify-end items-center">
     <p
-      class="w-28 self-end mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+      class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-8 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
     >
       <router-link to="/MiLista">My List</router-link>
     </p>
-
+    <p
+      class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+    >
+      <router-link to="/Kanban">Kanban</router-link>
+    </p>
+  </div>
     <!-- Título -->
     <h1
       class="text-center text-lg sm:text-2xl lg:text-3xl font-bold font-sans my-6 sm:my-12"
