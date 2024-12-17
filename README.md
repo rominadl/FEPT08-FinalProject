@@ -1,5 +1,12 @@
-# Vue 3 + Vite
+# ReFind
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+ReFind es una plataforma diseñada para conectar proveedores con restaurantes de manera efectiva y eficiente. A través de nuestra plataforma, puedes buscar restaurantes, crear tu propia lista de potenciales clientes y gestionar tu proceso de forma visual utilizando un tablero Kanban.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Requisitos previos
+
+Antes de empezar, asegúrate de tener instalado **Node.js** y hacer **npm install** en tu máquina. Si no los tienes, puedes descargarlos desde [Node.js](https://nodejs.org/).
+
+## ¿Como funciona?
+Buscar restaurantes: Utiliza la sección "Search" para encontrar restaurantes y ver los proveedores disponibles.
+Crear y gestionar tu lista: Accede a la sección "My List" para crear y gestionar tu lista de proveedores preferidos.
+Tablero Kanban: Utiliza el tablero Kanban para gestionar tus tareas y organizar tu flujo de trabajo de manera visual.
