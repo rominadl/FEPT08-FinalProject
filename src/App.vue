@@ -35,6 +35,15 @@
       >
         REGISTER
       </button>
+      <!-- Botón MY PROFILE con ícono -->
+<router-link to="/MiPerfil">
+  <button
+    class="text-xs sm:text-sm bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full h-10 w-28 sm:w-36 flex items-center justify-center space-x-2"
+  >
+    <i class="fas fa-user"></i> 
+    <span>MY PROFILE</span>
+  </button>
+</router-link>
     </div>
   </nav>
 
