@@ -2,16 +2,16 @@
   <!-- contenedor general -->
   <div class="flex flex-col py-10 min-h-screen bg-graylight">
     <!-- Botón "My List" -->
-    <div class="flex justify-end items-center">
+    <div class="flex justify-end items-center text-center">
       <p
-        class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-8 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+        class="w-28 mx-4 sm:mx-4  uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
       >
         <router-link to="/MiLista">My List</router-link>
       </p>
       <p
-        class="w-28 mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
+        class="w-42 mx-4 sm:mx-8 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-gray-100 hover:bg-green-800 hover:text-gray-100"
       >
-        <router-link to="/Kanban">Kanban</router-link>
+        <router-link to="/Kanban">My Kanban</router-link>
       </p>
     </div>
     <!-- Título -->
@@ -66,13 +66,20 @@
       </div>
 
       <!-- Contenedor de resultados -->
-      <div class="w-full sm:w-[400px]">
+      <div class="bg-white shadow-lg rounded-md p-5 lg:w-[450px]">
         <h2 class="font-semibold text-center sm:text-left mb-4">
           📍 Results for
           {{ displayRestType + " restaurants" }}
           {{ displayLocation ? " in " + displayLocation : "" }}
         </h2>
-
+        <!-- Mostrar mensaje si aún no se ha buscado -->
+        <p
+          v-if="!location && !restType && !loading"
+          class="text-center text-gray-600 italic mb-4"
+        >
+          No results yet. Search for a restaurant and we'll do the magic ✨
+        </p>
+        
         <!-- Mensajes de estado -->
         <div v-if="loading" class="text-center">Loading...</div>
         <div v-else-if="error" class="text-red-500 text-center">
