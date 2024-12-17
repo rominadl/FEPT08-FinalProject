@@ -33,10 +33,11 @@ const routes = [
         component:MiLista
     },
 
-    { path:"/Kanban",
-        name:"Kanban",
-        component:Kanban
-    },
+    {
+        path: '/kanban',
+        name: 'Kanban',
+        component: Kanban
+      },
 
 
 ];
