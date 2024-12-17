@@ -31,7 +31,7 @@ export const useResultadosmapStore = defineStore("yelp", {
         const data = await response.json();
         this.businesses = data.businesses;
       } catch (error) {
-        this.error = "Error al cargar los negocios";
+        this.error = "Error in charging restaurants";
         console.error(error.message);
       } finally {
         this.loading = false;
