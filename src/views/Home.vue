@@ -1,13 +1,10 @@
 <template>
   <div class="h-auto sm:h-[750px] bg-graylight">
-   
-   
     <!-- Título y descripción -->
     <h1 class="px-4 sm:px-10 pt-20 sm:pt-40 pb-5 text-4xl sm:text-6xl lg:text-7xl text-left uppercase font-semibold text-secondary">
       {{ title }}
     </h1>
     <p class="px-10 text-3xl text-textdark">{{ description }}</p>
-
     <!-- Enlaces a empezar a buscar y crear mi lista -->
     <div class="mt-16 sm:mt-32 flex justify-center sm:justify-start px-4 sm:px-10">
       <ul class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 font-sans">
@@ -40,12 +37,10 @@
         </li>
       </ul>
     </div>
-
     <!-- Vista principal -->
     <router-view></router-view>
   </div>
 </template>
-
 <script>
 export default {
   name: "Home",
@@ -59,8 +54,4 @@ export default {
   
 };
 </script>
-
-
-<style>
-
-</style>
+<style></style>
