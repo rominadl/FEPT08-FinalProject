@@ -1,11 +1,11 @@
 <template>
   <!-- Barra de navegación -->
-  <nav class="grid grid-cols-2 sm:grid-cols-3 p-5 bg-gray-100 items-center">
+  <nav class="grid grid-cols-2 sm:grid-cols-3 p-3 bg-gray-100 items-center">
     <!-- Logo con enlace a home -->
     <div class="col-span-1 flex justify-start items-center">
       <router-link to="/">
         <div
-          class="w-16 sm:w-20 md:w-24 h-16 sm:h-20 md:h-24 rounded-full overflow-hidden"
+          class="w-16 sm:w-20 md:w-16 h-16 sm:h-20 md:h-16 rounded-full overflow-hidden"
         >
           <img
             src="/src/Logo Búsqueda Lupa Ojo Minimalista Tipográfico Azul Blanco.png"
