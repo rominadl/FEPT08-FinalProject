@@ -5,6 +5,7 @@
     <p
       class="w-28 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-slate-200 hover:bg-green-800 hover:text-slate-200 mb-4"
     >
+    
       <router-link to="/Buscador">Return</router-link>
     </p>
 

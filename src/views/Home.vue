@@ -12,7 +12,7 @@
         <li>
           <router-link
             to="/Buscador"
-            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-8 rounded-full h-12 w-40 sm:w-48 border border-gray-300 shadow transition-all"
+            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded-full border border-gray-300 shadow transition-all"
           >
             Search
           </router-link>
@@ -21,7 +21,7 @@
         <li>
           <router-link
             to="/MiLista"
-            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-8 rounded-full h-12 w-40 sm:w-48 border border-gray-300 shadow transition-all"
+            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded-full border border-gray-300 shadow transition-all"
           >
             My List
           </router-link>
@@ -30,7 +30,7 @@
         <li>
           <router-link
             to="/Kanban"
-            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-3 px-8 rounded-full h-12 w-40 sm:w-48 border border-gray-300 shadow transition-all"
+            class="text-sm sm:text-base bg-white hover:bg-gray-100 text-gray-800 font-bold py-2 px-4 rounded-full border border-gray-300 shadow transition-all"
           >
             Kanban
           </router-link>
@@ -54,4 +54,5 @@ export default {
   
 };
 </script>
+
 <style></style>
