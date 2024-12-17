@@ -91,9 +91,6 @@
   </script>
   
   <style>
-  /* Optional styles for layout */
-  .flex-1 {
-    min-width: 300px;
-  }
+
   </style>
   
