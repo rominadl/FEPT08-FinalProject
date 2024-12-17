@@ -1,6 +1,6 @@
 <template>
   <!-- Contenedor general -->
-  <div class="container mx-auto py-8 min-h-screen px-4 sm:px-8">
+  <div class="mx-auto py-8 min-h-screen px-4 sm:px-8">
     <!-- Botón para volver al buscador -->
     <p
       class="w-28 uppercase font-bold rounded-md px-4 sm:px-6 py-3 bg-slate-200 hover:bg-green-800 hover:text-slate-200 mb-4"
@@ -30,14 +30,32 @@
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Price</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Address</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Telephone</th>
-            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Notes</th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Category</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100">Deal State</th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Menu</th>
+            <th class="border border-gray-300 px-4 py-2 bg-gray-100">Notes</th>
             <th class="border border-gray-300 px-4 py-2 bg-gray-100"></th>
           </tr>
         </thead>
         <tbody class="bg-gray-100">
+          <!-- Fila de ejemplo cuando la lista está vacía -->
+          <tr v-if="myList.length === 0">
+            <td class="border border-gray-300 px-4 py-2" colspan="8">
+              <p class="text-center text-gray-500">
+                No restaurants added yet. 
+              </p>
+            </td>
+          </tr>
+          <!-- Fila con datos reales cuando la lista tiene restaurantes -->
           <tr v-for="business in myList" :key="business.id">
-            <td class="border border-gray-300 px-4 py-2">{{ business.name }}</td>
+            <td class="border border-gray-300 px-4 py-2">            <a
+              :href="business.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-blue-600 hover:underline"
+            >
+              {{ business.name }}
+            </a></td>
             <td class="border border-gray-300 px-4 py-2 text-center">
               ⭐️ {{ business.rating }}
             </td>
@@ -48,23 +66,32 @@
               {{ business.location.display_address.join(", ") }}
             </td>
             <td class="border border-gray-300 px-4 py-2">{{ business.phone }}</td>
-            <td class="border border-gray-300 px-4 py-2">
-              <input
-                v-model="business.notes"
-                class="w-full border rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
-                placeholder="Add note..."
-              />
-            </td>
+            <td class="border border-gray-300 px-4 py-2">{{ business.categories.map(category => `${category.alias}, ${category.title}`).join(' | ') }}</td>
             <td class="border border-gray-300 px-4 py-2">
               <select
                 v-model="business.status"
-                class="w-full border rounded px-2 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
+                class="w-full border rounded px-4 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
               >
                 <option value="Por contactar">To be contacted</option>
                 <option value="En contacto">In contact</option>
                 <option value="Trato cerrado">Deal closed</option>
               </select>
             </td>
+            <td class="border border-gray-300 px-4 py-2">
+              <input
+                v-model="business.menu"
+                class="px-2 border rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
+                placeholder="Paste link to menu"
+              />
+            </td>
+            <td class="border border-gray-300 px-4 py-2">
+              <input
+                v-model="business.notes"
+                class="px-2 border rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-400"
+                placeholder="Add note..."
+              />
+            </td>
+            
             <td class="border border-gray-300 px-4 py-2">
               <button
                 @click="removeFromList(business.id)"
@@ -78,7 +105,7 @@
       </table>
 
       <!-- Vista tipo tarjeta para pantallas pequeñas -->
-      <div class="">
+      <div class="sm:hidden">
         <div
           v-for="business in myList"
           :key="business.id"
@@ -129,6 +156,7 @@ export default {
       return restaurants.myList.map((business) => ({
         ...business,
         notes: business.notes || "",
+        menu: business.menu || "",
         status: business.status || "To be contacted",
       }));
     },
