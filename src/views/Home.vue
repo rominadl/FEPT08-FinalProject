@@ -37,6 +37,7 @@
         </li>
       </ul>
     </div>
+
     <!-- Vista principal -->
     <router-view></router-view>
   </div>
